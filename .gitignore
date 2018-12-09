@@ -35,3 +35,16 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Robots/Assets/3DGamekit/
+Robots/Assets/3DGamekit.meta
+Robots/Assets/3DGameKit_Third-PartyNotice.txt.meta
+Robots/Assets/3DGameKit_Third-PartyNotice.txt
+Robots/Assets/SampleScenes.meta
+Robots/Assets/SampleScenes/AudioMixers.meta
+Robots/Assets/SampleScenes/
+Robots/Assets/Standard Assets.meta
+Robots/Assets/Gizmos.meta
+Robots/Assets/huehue.meta
+Robots/Assets/Gizmos/
+Robots/Assets/huehue/
+Robots/Assets/Standard Assets/
