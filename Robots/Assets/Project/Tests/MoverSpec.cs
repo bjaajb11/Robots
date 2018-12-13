@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NSubstitute;
+using NUnit.Framework;
 using Project.DataBuilders;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class MoverSpec
             Mover mover = Data.Mover().SetSpeed(1);
             mover.Move(horizontal, 0, deltaTime);
             Assert.That(mover.Position, Is.EqualTo(new Vector3(expectedX, 0, 0)));
+            var obj = Substitute.For<Mover>();
         }
 
         [Test]
