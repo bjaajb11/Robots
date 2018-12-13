@@ -8,11 +8,12 @@ namespace Project.Scripts
 
         public CameraFacade(Camera camera)
         {
-            _camera = camera;
+            _camera = camera;            
         }
 
         public Ray ScreenPointToRay(Vector3 rayCastPoint)
         {
+         
             return _camera.ScreenPointToRay(rayCastPoint);
         }
     }

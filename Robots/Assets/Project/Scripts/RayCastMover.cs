@@ -10,13 +10,6 @@ namespace Project.Scripts
         [SerializeField] private LayerMask _movementMask;
         private IPhysics _physics;
 
-        private void Start()
-        {
-            _camera = UnityServices.MainCamera;
-            _motor = GetComponent<NavMeshAgentMotor>();
-            _physics = UnityServices.Physics;
-        }
- 
         public void Move(Vector3 rayCastPoint)
         {
             var ray = _camera.ScreenPointToRay(rayCastPoint);
@@ -31,6 +24,13 @@ namespace Project.Scripts
             _camera = camera;
             _motor = motor;
             _movementMask = movementMask;
+        }
+
+        private void Start()
+        {
+            _camera = UnityServices.MainCamera;
+            _motor = GetComponent<NavMeshAgentMotor>();
+            _physics = UnityServices.Physics;
         }
     }
 }

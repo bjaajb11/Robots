@@ -1,18 +1,21 @@
-﻿using UnityEngine;
+﻿using Project.Scripts;
+using UnityEngine;
 
+[RequireComponent(typeof(RayCastMover))]
 public class Player : MonoBehaviour
 {
-    private Mover _mover;
+    private RayCastMover _mover;
     
     private void Start()
     {
-        _mover = GetComponent<Mover>();
+        _mover = GetComponent<RayCastMover>();
     }
 
     private void Update()
     {
-        var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");
-        _mover.Move(horizontal, vertical, Time.deltaTime);
+        if (Input.GetMouseButtonDown(0))
+        {            
+            _mover.Move(Input.mousePosition);
+        }
     }
 }
