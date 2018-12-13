@@ -4,7 +4,7 @@ using UnityEngine.AI;
 namespace Project.Scripts
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class NavMeshAgentMotor : MonoBehaviour
+    public class NavMeshAgentMotor : MonoBehaviour, INavMeshAgentMotor
     {
         private INavMeshAgent _agent;
 
