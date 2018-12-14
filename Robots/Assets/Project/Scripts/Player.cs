@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     private RayCastMover _mover;
 
+    [SerializeField] private AttackSkill _lmbSkill;
+
     private void Start()
     {
         _mover = GetComponent<RayCastMover>();
