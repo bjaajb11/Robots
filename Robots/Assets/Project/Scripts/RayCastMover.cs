@@ -2,35 +2,31 @@
 
 namespace Project.Scripts
 {
-    [RequireComponent(typeof(NavMeshAgentMotor))]
+    [RequireComponent(typeof(NavMeshAgentMotor), typeof(CameraRayCast))]
     public class RayCastMover : MonoBehaviour
     {
-        private ICamera _camera;
         private INavMeshAgentMotor _motor;
         [SerializeField] private LayerMask _movementMask;
-        private IPhysics _physics;
+        private ICameraRayCast _raycaster;
 
         public void Move(Vector3 rayCastPoint)
         {
-            var ray = _camera.ScreenPointToRay(rayCastPoint);
-            RaycastHit hit;
-            if (_physics.RayCast(ray, out hit, 100, _movementMask))
-                _motor.MoveToPoint(hit.point);
+            var point = _raycaster.GetMaskedHitPoint(rayCastPoint, _movementMask);
+            if (point.HasValue)
+                _motor.MoveToPoint(point.Value);
         }
 
-        public void Init(IPhysics physics, ICamera camera, INavMeshAgentMotor motor, LayerMask movementMask)
+        public void Init(ICameraRayCast rayCaster, INavMeshAgentMotor motor, LayerMask movementMask)
         {
-            _physics = physics;
-            _camera = camera;
+            _raycaster = rayCaster;
             _motor = motor;
             _movementMask = movementMask;
         }
 
         private void Start()
         {
-            _camera = UnityServices.MainCamera;
+            _raycaster = GetComponent<ICameraRayCast>();
             _motor = GetComponent<NavMeshAgentMotor>();
-            _physics = UnityServices.Physics;
         }
     }
 }

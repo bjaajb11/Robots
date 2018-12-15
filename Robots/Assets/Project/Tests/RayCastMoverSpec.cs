@@ -17,43 +17,27 @@ public class RayCastMoverSpec
 
             var mover = new GameObject().AddComponent<RayCastMover>();
             var motor = Substitute.For<INavMeshAgentMotor>();
-            InitMover(rayCastPoint, rayCastHitPoint, mover, motor);
+            InitMover(rayCastHitPoint, mover, motor);
 
             mover.Move(rayCastPoint);
 
             motor.Received().MoveToPoint(rayCastHitPoint);
         }
 
-        private static void InitMover(Vector3 rayCastPoint, Vector3 rayCastHitPoint, RayCastMover mover,
+        private static void InitMover(Vector3 rayCastHitPoint, RayCastMover mover,
             INavMeshAgentMotor motor)
         {
             var movementMask = new LayerMask();
-            var ray = new Ray();
-            var camera = SetupCamera(rayCastPoint, ray);
-            var physics = SetupPhysics(ray, movementMask, rayCastHitPoint);
+            var rayCast = SetupRayCast(movementMask, rayCastHitPoint);
 
-            mover.Init(physics, camera, motor, movementMask);
+            mover.Init(rayCast,  motor, movementMask);
         }
 
-        private static ICamera SetupCamera(Vector3 rayCastPoint, Ray ray)
+        private static ICameraRayCast SetupRayCast(LayerMask movementMask, Vector3 rayCastHitPoint)
         {
-            var camera = Substitute.For<ICamera>();
-            camera.ScreenPointToRay(rayCastPoint).Returns(ray);
-            return camera;
-        }
-
-        private static IPhysics SetupPhysics(Ray ray, LayerMask movementMask, Vector3 rayCastHitPoint)
-        {
-            var physics = Substitute.For<IPhysics>();
-            RaycastHit hit;
-
-            physics.RayCast(ray, out hit, 100, movementMask).Returns(x =>
-            {
-                x[1] = new RaycastHit {point = rayCastHitPoint};
-
-                return true;
-            });
-            return physics;
+            var rayCast = Substitute.For<ICameraRayCast>();
+            rayCast.GetMaskedHitPoint(Arg.Any<Vector3>(), movementMask).Returns(rayCastHitPoint);
+            return rayCast;
         }
     }
 }

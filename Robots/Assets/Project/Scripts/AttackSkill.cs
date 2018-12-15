@@ -7,8 +7,11 @@ namespace Project.Scripts
     {
         [SerializeField] private float _cooldown;
         [SerializeField] private int _damage;
+        [SerializeField] private string _name = "Attack Skill";
+
         private float _remainingCooldown;
 
+        public string Name => _name;
         public void Attack(IDamagable target)
         {
             if (target == null)

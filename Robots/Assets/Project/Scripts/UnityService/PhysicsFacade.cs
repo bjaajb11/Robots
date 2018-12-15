@@ -8,5 +8,10 @@ namespace Project.Scripts
         {
             return Physics.Raycast(ray, out hit, distance, movementMask);
         }
+
+        public bool RayCast(Ray ray, out RaycastHit hit)
+        {
+            return Physics.Raycast(ray, out hit);
+        }
     }
 }

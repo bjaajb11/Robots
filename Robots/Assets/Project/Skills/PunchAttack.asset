@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756c4c13f57243d6a25b56aadde64609, type: 3}
   m_Name: PunchAttack
   m_EditorClassIdentifier: 
+  _cooldown: 1
   _damage: 10
+  _name: Punch

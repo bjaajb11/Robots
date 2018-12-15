@@ -3,5 +3,8 @@
     internal static class Data
     {
         public static AttackSkillBuilder AttackSkill => new AttackSkillBuilder();
+
+        public static RayCastInteractorBuilder RayCastInteractor =>
+            new RayCastInteractorBuilder();
     }
 }
