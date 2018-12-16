@@ -16,5 +16,11 @@ namespace Project.Scripts
         {
             _agent.SetDestination(point);
         }
+
+        public float StoppingDistance
+        {
+            get { return _agent.stoppingDistance; }
+            set { _agent.stoppingDistance = value; }
+        }
     }
 }

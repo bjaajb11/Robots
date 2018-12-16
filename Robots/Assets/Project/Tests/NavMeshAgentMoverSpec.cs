@@ -22,4 +22,18 @@ public class NavMeshAgentMotorSpec
             agent.Received().SetDestination(point);
         }
     }
+
+    public class SetStoppingDistanceTests
+    {
+        [Test]
+        public void Always_SetsAgentStoppingDistanceToValue([Values(0, 20)]float distance)
+        {
+            var agent = Substitute.For<INavMeshAgent>();
+            var motor = new GameObject().AddComponent<NavMeshAgentMotor>();
+            motor.Init(agent);
+            motor.StoppingDistance = distance;
+
+            Assert.That(agent.StoppingDistance, Is.EqualTo(distance));
+        }
+    }
 }

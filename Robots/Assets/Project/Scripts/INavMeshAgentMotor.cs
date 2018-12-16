@@ -5,5 +5,6 @@ namespace Project.Scripts
     public interface INavMeshAgentMotor
     {
         void MoveToPoint(Vector3 point);
+        float StoppingDistance { get; set; }
     }
 }

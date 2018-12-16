@@ -9,11 +9,13 @@ namespace Project.Scripts
         [SerializeField] private LayerMask _movementMask;
         private ICameraRayCast _raycaster;
 
-        public void Move(Vector3 rayCastPoint)
+        public void Move(Vector3 rayCastPoint, Interactable target = null)
         {
             var point = _raycaster.GetMaskedHitPoint(rayCastPoint, _movementMask);
             if (point.HasValue)
                 _motor.MoveToPoint(point.Value);
+            _motor.StoppingDistance = (target?.Radius ?? 0f) * 0.8f;
+
         }
 
         public void Init(ICameraRayCast rayCaster, INavMeshAgentMotor motor, LayerMask movementMask)
