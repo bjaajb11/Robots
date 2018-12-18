@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Player;
+using UnityEngine;
 
 namespace Project.Scripts
 {
     [RequireComponent(typeof(NavMeshAgentMotor), typeof(CameraRayCast))]
-    public class RayCastMover : MonoBehaviour
+    public class RayCastMover : MonoBehaviour, IRayCastMover
     {
         private INavMeshAgentMotor _motor;
         [SerializeField] private LayerMask _movementMask;

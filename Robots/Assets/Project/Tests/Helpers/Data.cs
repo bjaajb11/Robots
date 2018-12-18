@@ -6,5 +6,7 @@
 
         public static RayCastInteractorBuilder RayCastInteractor =>
             new RayCastInteractorBuilder();
+
+        public static MouseActionBuilder MouseAction => new MouseActionBuilder();
     }
 }

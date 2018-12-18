@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Player;
+using UnityEngine;
 
 namespace Project.Scripts
 {
     [RequireComponent(typeof(CameraRayCast))]
-    public class RayCastInteractor : MonoBehaviour
+    public class RayCastInteractor : MonoBehaviour, IRayCastInteractor
     {
         private ICameraRayCast _rayCaster;
 

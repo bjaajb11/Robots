@@ -12,5 +12,15 @@ namespace Project.Scripts
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, _radius);
         }
+
+        public bool IsInRange(Vector3 position)
+        {
+            return Vector3.Distance(position, transform.position) <= _radius;
+        }
+
+        public void SetInternals(float radius)
+        {
+            _radius = radius;
+        }
     }
 }

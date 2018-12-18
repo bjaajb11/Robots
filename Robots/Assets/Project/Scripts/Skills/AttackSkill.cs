@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Skills;
+using UnityEngine;
 
 namespace Project.Scripts
 {
     [CreateAssetMenu(fileName = "AttackSkill", menuName = "Skills/AttackSkill", order = 1)]
-    public class AttackSkill : ScriptableObject
+    public class AttackSkill : ScriptableObject, IAttackSkill
     {
         [SerializeField] private float _cooldown;
         [SerializeField] private int _damage;
