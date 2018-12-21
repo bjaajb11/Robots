@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Skills;
+﻿using Project.Scripts.Character;
+using Project.Scripts.Skills;
 using UnityEngine;
 
 namespace Project.Scripts
@@ -13,7 +14,7 @@ namespace Project.Scripts
         private float _remainingCooldown;
 
         public string Name => _name;
-        public void Attack(IDamagable target)
+        public void Attack(ICharacterStats target)
         {
             if (target == null)
             {

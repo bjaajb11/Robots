@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 using Project.Scripts;
+using Project.Scripts.Character;
 using Project.Tests.Helpers;
 
 public class AttackSkillSpec
@@ -8,12 +9,12 @@ public class AttackSkillSpec
 {
     public class AttackTests
     {
-        private IDamagable _target;
+        private ICharacterStats _target;
 
         [SetUp]
         public void CreateTarget()
         {
-            _target = Substitute.For<IDamagable>();
+            _target = Substitute.For<ICharacterStats>();
         }
 
         [Test]

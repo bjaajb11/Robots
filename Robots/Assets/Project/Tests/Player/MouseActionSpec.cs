@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 using Project.Scripts;
+using Project.Scripts.Character;
 using Project.Scripts.Player;
 using Project.Scripts.Skills;
 using Project.Tests.Helpers;
@@ -42,7 +43,9 @@ public class MouseActionSpec
         [Test]
         public void HasInRangeTarget_AttacksTargetWithSkill()
         {
-            var interactable = new GameObject().AddComponent<DamagableInteractable>();
+            var gameObject = new GameObject();
+            var interactable = gameObject.AddComponent<Interactable>();
+            var stats = gameObject.AddComponent<CharacterStats>();
             interactable.SetInternals(1f);
             (MouseAction action, _, _) = Data.MouseAction.SetInteractionTarget(interactable);
 
@@ -50,14 +53,15 @@ public class MouseActionSpec
 
             var skill = Substitute.For<IAttackSkill>();
             action.DoMouseAction(position, skill);
-            skill.Received(1).Attack(interactable);
+            skill.Received(1).Attack(stats);
         }
 
         [Test]
         public void TargetNotInRange_DoesNotAttacksTargetWithSkill()
         {
             var gameObject = new GameObject();
-            var interactable = gameObject.AddComponent<DamagableInteractable>();
+            var interactable = gameObject.AddComponent<Interactable>();
+            var stats = gameObject.AddComponent<CharacterStats>();
             interactable.SetInternals(0.2f);
             (MouseAction action, _, _) = Data.MouseAction.SetInteractionTarget(interactable);
 
@@ -65,14 +69,7 @@ public class MouseActionSpec
             gameObject.transform.position = Vector3.forward;
             var skill = Substitute.For<IAttackSkill>();
             action.DoMouseAction(position, skill);
-            skill.Received(0).Attack(interactable);
-        }
-    }
-
-    private class DamagableInteractable : Interactable, IDamagable
-    {
-        public void TakeDamage(int amount)
-        {
+            skill.Received(0).Attack(stats);
         }
     }
 }

@@ -18,7 +18,6 @@ namespace Project.Scripts
         public void UpdateFocus(Vector3 testPoint)
         {
             Target = _rayCaster.GetHitObject<Interactable>(testPoint);
-            Debug.Log($"Update Focus ({testPoint}), found target: {Target?.name}");
         }
 
         public void Init(ICameraRayCast rayCaster)

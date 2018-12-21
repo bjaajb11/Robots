@@ -1,4 +1,5 @@
 ﻿using Project.Scripts;
+using Project.Scripts.Character;
 using Project.Scripts.Player;
 using Project.Scripts.Skills;
 using UnityEngine;
@@ -17,9 +18,8 @@ public class MouseAction : MonoBehaviour
 
         if (!_rayCaster.HasTarget()) return;
         var target = _rayCaster.Target;
-        Debug.Log($"Hit interactable {target.name}");
         if (target.IsInRange(transform.position))
-            skill?.Attack(target as IDamagable);
+            skill?.Attack(target.GetComponent<CharacterStats>());
     }
 
     public void Init(IRayCastMover mover, IRayCastInteractor interactor)

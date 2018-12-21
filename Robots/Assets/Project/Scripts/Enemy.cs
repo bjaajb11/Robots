@@ -1,22 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Project.Scripts;
+﻿using Project.Scripts;
+using Project.Scripts.Character;
 using UnityEngine;
 
-public class Enemy : Interactable, IDamagable {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+[RequireComponent(typeof(CharacterStats))]
+public class Enemy : Interactable
+{
+    private CharacterStats _stats;
 
     public void TakeDamage(int amount)
     {
+        _stats.TakeDamage(amount);
         Debug.Log($"{transform.name} takes {amount} damage.");
+    }
+
+    private void Start()
+    {
+        _stats = GetComponent<CharacterStats>();
+        _stats.DieAction += Die;
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
