@@ -8,5 +8,7 @@
             new RayCastInteractorBuilder();
 
         public static MouseActionBuilder MouseAction => new MouseActionBuilder();
+
+        public  static LookRadiusMoverSpec.LookRadiusMoverBuilder LookRadiusMover => new LookRadiusMoverSpec.LookRadiusMoverBuilder();
     }
 }

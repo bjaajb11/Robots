@@ -15,12 +15,12 @@ namespace Project.Scripts
             return null;
         }
 
-        public T GetHitObject<T>(Vector3 point)
+        public T GetHitObject<T>(Vector3 point) where T: class
         {
             var ray = _camera.ScreenPointToRay(point);
             RaycastHit hit;
             Physics.Raycast(ray, out hit);
-            return hit.collider.GetComponent<T>();
+            return hit.collider?.GetComponent<T>();
         }
 
         private void Start()

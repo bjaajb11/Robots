@@ -17,6 +17,7 @@ public class MouseAction : MonoBehaviour
         _mover.Move(mousePosition, _rayCaster.Target);
 
         if (!_rayCaster.HasTarget()) return;
+
         var target = _rayCaster.Target;
         if (target.IsInRange(transform.position))
             skill?.Attack(target.GetComponent<CharacterStats>());
@@ -26,6 +27,12 @@ public class MouseAction : MonoBehaviour
     {
         _mover = mover;
         _rayCaster = interactor;
+    }
+
+    private void Update()
+    {
+        if (!(_rayCaster?.HasTarget() ?? true)) return;
+        PositionHelper.FaceTarget(transform, _rayCaster.Target.transform);
     }
 
     private void Start()
