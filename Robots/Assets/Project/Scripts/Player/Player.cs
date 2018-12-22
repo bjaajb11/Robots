@@ -20,10 +20,6 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
             _mouseAction.DoMouseAction(Input.mousePosition, _lmbSkill);
 
-    }
-
-    private void FixedUpdate()
-    {
         _lmbSkill.ReduceCooldown(Time.deltaTime);
     }
 }

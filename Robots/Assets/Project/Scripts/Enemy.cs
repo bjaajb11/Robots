@@ -7,7 +7,7 @@ public class Enemy : Interactable
 {
     private LookRadiusMover _mover;
     private CharacterStats _stats;
-
+    [SerializeField] private AttackSkill _skill;
     public void TakeDamage(int amount)
     {
         _stats.TakeDamage(amount);
@@ -23,7 +23,13 @@ public class Enemy : Interactable
 
     private void Update()
     {
-        _mover.Move(PlayerManager.Instance.Player.transform.position);
+        var player = PlayerManager.Instance.Player;
+        var position = player.transform.position;
+        _mover.Move(position);
+        var distance = Vector3.Distance(position, transform.position);
+        if(distance < 2f)
+            _skill.Attack(player.GetComponent<CharacterStats>());
+        _skill.ReduceCooldown(Time.deltaTime);
     }
 
     private void Die()

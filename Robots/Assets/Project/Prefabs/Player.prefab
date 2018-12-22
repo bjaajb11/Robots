@@ -43,9 +43,10 @@ GameObject:
   - component: {fileID: 6412137046688163775}
   - component: {fileID: 6412137046688163774}
   - component: {fileID: 6412137046688163761}
+  - component: {fileID: 6412137046688163763}
+  - component: {fileID: 2214674820659633945}
   - component: {fileID: 6412137046688163772}
   - component: {fileID: 6412137046688163760}
-  - component: {fileID: 6412137046688163763}
   - component: {fileID: 6412137046688163773}
   - component: {fileID: 6412137046688163770}
   - component: {fileID: 6412137046688163771}
@@ -124,6 +125,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6412137046688163763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412137046688163765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de783b092d349074bb54abea73e00b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lmbSkill: {fileID: 11400000, guid: d805d9c76386ec2438b8b43487f9ca70, type: 2}
+--- !u!114 &2214674820659633945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412137046688163765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3c9facb1e749df8371ef78ad364b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth:
+    _value: 5000
 --- !u!114 &6412137046688163772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,19 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93a30c0c37247f5a70853c110705957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6412137046688163763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6412137046688163765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de783b092d349074bb54abea73e00b99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lmbSkill: {fileID: 11400000, guid: d805d9c76386ec2438b8b43487f9ca70, type: 2}
 --- !u!114 &6412137046688163773
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ namespace Project.Scripts.Character
         }
 
         public event Action DieAction;
+        public GameObject GameObject => gameObject;
 
         private void Start()
         {

@@ -22,6 +22,7 @@ namespace Project.Scripts
                 return;
             }
             if (_remainingCooldown > 0) return;
+            Debug.Log($"{name} attacks {target.GameObject?.name} with {_name} for {_damage}");
             target.TakeDamage(_damage);
             _remainingCooldown = _cooldown;
         }

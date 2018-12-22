@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Project.Scripts.Character
 {
@@ -6,5 +7,6 @@ namespace Project.Scripts.Character
     {
         void TakeDamage(int damage);
         event Action DieAction;
+        GameObject GameObject { get; }
     }
 }
