@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ad8192a709029ae4eb9a66bd9fd26cae
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sulphur Point
+  fontNames:
+  - Sulphur Point
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 67e31f53898077040817bc77c542f047, type: 3}
+  - {fileID: 12800000, guid: 7b9dc64c28513d4438497fe5d5a7524f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

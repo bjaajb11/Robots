@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: bb93f2082006bd244b2412e84c32bbbc
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Roddenberry
+  fontNames:
+  - Roddenberry
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5f4ec990773d9c743a5c448fd9131de9, type: 3}
+  - {fileID: 12800000, guid: 7ec087f2ea57c104ca4121d0fcb373d8, type: 3}
+  - {fileID: 12800000, guid: 04c97c89f2bed3a4e9cbd58beb86d304, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
