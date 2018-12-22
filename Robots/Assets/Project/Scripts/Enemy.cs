@@ -24,6 +24,7 @@ public class Enemy : Interactable
     private void Update()
     {
         var player = PlayerManager.Instance.Player;
+        if (player.IsDead) return;
         var position = player.transform.position;
         _mover.Move(position);
         var distance = Vector3.Distance(position, transform.position);

@@ -1234,6 +1234,11 @@ PrefabInstance:
       propertyPath: _offset.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2214674820659633945, guid: d22683351f1949e47a5389821d293f35,
+        type: 3}
+      propertyPath: _maxHealth._value
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6412137046688163761, guid: d22683351f1949e47a5389821d293f35, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d22683351f1949e47a5389821d293f35, type: 3}
