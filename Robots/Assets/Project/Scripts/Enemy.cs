@@ -5,20 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterStats))]
 public class Enemy : Interactable
 {
+    [SerializeField] private GameObject _hitParticles;
     private LookRadiusMover _mover;
-    private CharacterStats _stats;
     [SerializeField] private AttackSkill _skill;
-    public void TakeDamage(int amount)
-    {
-        _stats.TakeDamage(amount);
-        Debug.Log($"{transform.name} takes {amount} damage.");
-    }
+    private CharacterStats _stats;
 
     private void Start()
     {
         _stats = GetComponent<CharacterStats>();
         _mover = GetComponent<LookRadiusMover>();
         _stats.DieAction += Die;
+        _stats.TakeDamageAction += TakeDamage;
     }
 
     private void Update()
@@ -28,13 +25,20 @@ public class Enemy : Interactable
         var position = player.transform.position;
         _mover.Move(position);
         var distance = Vector3.Distance(position, transform.position);
-        if(distance < 2f)
-            _skill.Attack(player.GetComponent<CharacterStats>());
-        _skill.ReduceCooldown(Time.deltaTime);
+        if (distance < 2f)
+            _skill?.Attack(player.GetComponent<CharacterStats>());
+        _skill?.ReduceCooldown(Time.deltaTime);
     }
 
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void TakeDamage(int amount)
+    {
+        var rotation = new Quaternion(0, 180, 180, 0);
+        Instantiate(_hitParticles, transform.position, rotation);
+        Debug.Log($"{transform.name} takes {amount} damage.");
     }
 }

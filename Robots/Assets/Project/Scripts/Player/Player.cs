@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         _mouseAction = GetComponent<MouseAction>();
         _characterStats = GetComponent<CharacterStats>();
         _characterStats.DieAction += Die;
+        _lmbSkill.SetAnimator(GetComponent<Animator>());
     }
 
     private void Die()
@@ -29,8 +30,10 @@ public class Player : MonoBehaviour
     {
         if (IsDead) return;
         if (Input.GetMouseButtonDown(0))
+        {
             _mouseAction.DoMouseAction(Input.mousePosition, _lmbSkill);
-
+         
+        }
         _lmbSkill.ReduceCooldown(Time.deltaTime);
     }
 }

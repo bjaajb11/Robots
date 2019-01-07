@@ -30,7 +30,7 @@ public class CharacterStatsSpec
         }
     }
 
-    private class IsDeadTests
+    public class IsDeadTests
     {
         [Test]
         [TestCase(10, false, TestName = "Health 10, not dead")]
@@ -42,6 +42,46 @@ public class CharacterStatsSpec
             var stats = new GameObject().AddComponent<CharacterStats>();
             stats.SetInternals(currentHealth);
             Assert.That(stats.IsDead, Is.EqualTo(expectedIsDead));
+        }
+    }
+
+    public class TakeDamageTests
+    {
+        [Test]
+        public void TakesExpectedDamage_CallsTakeDamgeAction([Values(9, 2, 3)] int expectedDamage)
+        {
+            var called = false;
+            var actualDamage = 0;
+            var stats = new GameObject().AddComponent<CharacterStats>();
+
+            void OnStatsOnTakeDamageAction(int damage)
+            {
+                called = true;
+                actualDamage = damage;
+            }
+
+            stats.TakeDamageAction += OnStatsOnTakeDamageAction;
+            stats.SetInternals(10);
+            stats.TakeDamage(expectedDamage);
+            Assert.That(called, Is.True, "Should have called take damage action");
+            Assert.That(actualDamage, Is.EqualTo(expectedDamage));
+        }
+
+        [Test]
+        public void TakesNoDamage_DoesNotCallTakeDamgeAction([Values(0, -1, -130)] int expectedDamage)
+        {
+            var called = false;
+            var stats = new GameObject().AddComponent<CharacterStats>();
+
+            void OnStatsOnTakeDamageAction(int damage)
+            {
+                called = true;
+            }
+
+            stats.TakeDamageAction += OnStatsOnTakeDamageAction;
+            stats.SetInternals(10);
+            stats.TakeDamage(expectedDamage);
+            Assert.That(called, Is.False, "Should not have called take damage action");
         }
     }
 }
